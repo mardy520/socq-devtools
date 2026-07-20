@@ -1,0 +1,33 @@
+import {mkdir, readFile, writeFile, rm} from "node:fs/promises";
+import {homedir} from "node:os";
+import {dirname, join} from "node:path";
+
+export interface SocqConfig {apiKey?: string; baseUrl?: string}
+
+export function configPath(): string {
+  const root = process.env.XDG_CONFIG_HOME || (process.platform === "win32" ? process.env.APPDATA : undefined) || join(homedir(), ".config");
+  return join(root, "socq", "config.json");
+}
+
+export async function loadConfig(): Promise<SocqConfig> {
+  try {
+    return JSON.parse(await readFile(configPath(), "utf8")) as SocqConfig;
+  } catch {
+    return {};
+  }
+}
+
+export async function saveConfig(config: SocqConfig): Promise<void> {
+  const path = configPath();
+  await mkdir(dirname(path), {recursive: true});
+  await writeFile(path, `${JSON.stringify(config, null, 2)}\n`, {encoding: "utf8", mode: 0o600});
+}
+
+export async function clearConfig(): Promise<void> {
+  await rm(configPath(), {force: true});
+}
+
+export function maskApiKey(value?: string): string {
+  if (!value) return "not configured";
+  return value.length <= 12 ? "********" : `${value.slice(0, 6)}…${value.slice(-4)}`;
+}

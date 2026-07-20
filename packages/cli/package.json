@@ -1,0 +1,21 @@
+{
+  "name": "@socq/cli",
+  "version": "0.1.0-beta.1",
+  "description": "Catalog-driven CLI for SocQ social data APIs",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {"socq": "./dist/bin.js"},
+  "files": ["dist"],
+  "publishConfig": {"access": "public"},
+  "engines": {"node": ">=20"},
+  "dependencies": {
+    "@socq/core": "workspace:*",
+    "@socq/mcp": "workspace:*"
+  },
+  "scripts": {
+    "build": "node ../../scripts/clean-dist.mjs && tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  }
+}

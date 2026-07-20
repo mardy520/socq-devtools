@@ -1,0 +1,141 @@
+import type {Capability, CatalogData, ClientOptions, TaskData} from "./types.js";
+
+export class SocqApiError extends Error {
+  constructor(
+    message: string,
+    public readonly status: number,
+    public readonly detail?: unknown,
+  ) {
+    super(message);
+    this.name = "SocqApiError";
+  }
+}
+
+export class SocqClient {
+  readonly baseUrl: string;
+  readonly apiKey?: string;
+  readonly source: string;
+  private readonly fetchImpl: typeof globalThis.fetch;
+  private catalogCache?: {etag?: string; data: CatalogData};
+
+  constructor(options: ClientOptions = {}) {
+    this.baseUrl = (options.baseUrl ?? process.env.SOCQ_BASE_URL ?? "https://api.socq.ai").replace(/\/$/, "");
+    this.apiKey = options.apiKey ?? process.env.SOCQ_API_KEY;
+    this.source = options.source ?? "cli";
+    this.fetchImpl = options.fetch ?? globalThis.fetch;
+  }
+
+  async catalog(params: Record<string, string | number | undefined> = {}): Promise<CatalogData> {
+    const url = this.url("/v1/catalog", {...params, limit: params.limit ?? 100});
+    const headers: Record<string, string> = {};
+    if (this.catalogCache?.etag && Object.keys(params).length === 0) headers["If-None-Match"] = this.catalogCache.etag;
+    const response = await this.fetchImpl(url, {headers});
+    if (response.status === 304 && this.catalogCache) return this.catalogCache.data;
+    const payload = await this.parseResponse<{code: number; data: CatalogData}>(response);
+    if (Object.keys(params).length === 0) {
+      this.catalogCache = {etag: response.headers.get("etag") ?? undefined, data: payload.data};
+    }
+    return payload.data;
+  }
+
+  async capability(publicId: string): Promise<Capability> {
+    const [platform, resource] = normalizeEndpoint(publicId).split("/", 2);
+    const response = await this.fetchImpl(this.url(`/v1/catalog/endpoints/${encodeURIComponent(platform)}/${encodeURIComponent(resource)}`));
+    return (await this.parseResponse<{code: number; data: Capability}>(response)).data;
+  }
+
+  async submit(
+    platform: string,
+    resource: string,
+    input: Record<string, unknown>,
+    options: {idempotencyKey?: string} = {},
+  ): Promise<TaskData> {
+    const response = await this.fetchImpl(
+      this.url(`/v1/${encodeURIComponent(platform)}/${encodeURIComponent(resource)}`),
+      {
+        method: "POST",
+        headers: this.authHeaders({
+          "Content-Type": "application/json",
+          ...(options.idempotencyKey ? {"Idempotency-Key": options.idempotencyKey} : {}),
+        }),
+        body: JSON.stringify(input),
+      },
+    );
+    return (await this.parseResponse<{code: number; data: TaskData}>(response)).data;
+  }
+
+  async task(taskId: string, options: {cursor?: string; limit?: number} = {}): Promise<TaskData> {
+    const response = await this.fetchImpl(
+      this.url(`/v1/tasks/${encodeURIComponent(taskId)}`, {cursor: options.cursor, limit: options.limit ?? 50}),
+      {headers: this.authHeaders()},
+    );
+    return (await this.parseResponse<{code: number; data: TaskData}>(response)).data;
+  }
+
+  async files(taskId: string): Promise<unknown> {
+    const response = await this.fetchImpl(this.url(`/v1/tasks/${encodeURIComponent(taskId)}/files`), {
+      headers: this.authHeaders(),
+    });
+    return (await this.parseResponse<{code: number; data: unknown}>(response)).data;
+  }
+
+  async account(): Promise<unknown> {
+    const response = await this.fetchImpl(this.url("/v1/account"), {headers: this.authHeaders()});
+    return (await this.parseResponse<{code: number; data: unknown}>(response)).data;
+  }
+
+  async waitTask(
+    taskId: string,
+    options: {timeoutSeconds?: number; limit?: number; onPoll?: (task: TaskData) => void} = {},
+  ): Promise<TaskData> {
+    const timeout = Math.max(1, options.timeoutSeconds ?? 90) * 1000;
+    const deadline = Date.now() + timeout;
+    while (true) {
+      const task = await this.task(taskId, {limit: options.limit});
+      options.onPoll?.(task);
+      if (task.status === "succeeded" || task.status === "failed") return task;
+      if (Date.now() >= deadline) throw new SocqApiError(`Timed out waiting for task ${taskId}`, 408, task);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+    }
+  }
+
+  private authHeaders(extra: Record<string, string> = {}): Record<string, string> {
+    if (!this.apiKey) throw new SocqApiError("SOCQ_API_KEY is required for this command", 401);
+    return {
+      Authorization: `Bearer ${this.apiKey}`,
+      "X-Socq-Source": this.source,
+      ...extra,
+    };
+  }
+
+  private url(path: string, params: Record<string, string | number | undefined> = {}): string {
+    const url = new URL(path, this.baseUrl);
+    for (const [key, value] of Object.entries(params)) {
+      if (value !== undefined && value !== "") url.searchParams.set(key, String(value));
+    }
+    return url.toString();
+  }
+
+  private async parseResponse<T>(response: Response): Promise<T> {
+    const text = await response.text();
+    let payload: unknown;
+    try {
+      payload = text ? JSON.parse(text) : undefined;
+    } catch {
+      payload = text;
+    }
+    if (!response.ok) {
+      const detail = typeof payload === "object" && payload !== null && "detail" in payload ? (payload as {detail: unknown}).detail : payload;
+      throw new SocqApiError(`SocQ API request failed (${response.status})`, response.status, detail);
+    }
+    return payload as T;
+  }
+}
+
+export function normalizeEndpoint(value: string): string {
+  const normalized = value.trim().toLowerCase();
+  if (!normalized.includes("/")) throw new SocqApiError(`Invalid endpoint: ${value}`, 400);
+  const [platform, resource, ...extra] = normalized.split("/");
+  if (!platform || !resource || extra.length) throw new SocqApiError(`Invalid endpoint: ${value}`, 400);
+  return `${platform}/${resource}`;
+}
