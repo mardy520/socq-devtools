@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-d18678b71b32",
+    "version": "v1-063d1c96173a",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -537,7 +537,9 @@
                     "description": "Public profile or content URLs."
                   }
                 },
-                "required": []
+                "required": [
+                  "urls"
+                ]
               }
             }
           }
@@ -614,7 +616,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -691,7 +710,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -749,7 +785,9 @@
                     "description": "Public profile or content URLs."
                   }
                 },
-                "required": []
+                "required": [
+                  "urls"
+                ]
               }
             }
           }
@@ -826,7 +864,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -903,7 +958,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -980,7 +1052,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }
@@ -1057,7 +1146,24 @@
                     "description": "Public account usernames."
                   }
                 },
-                "required": []
+                "required": [],
+                "anyOf": [
+                  {
+                    "required": [
+                      "query"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "urls"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "usernames"
+                    ]
+                  }
+                ]
               }
             }
           }

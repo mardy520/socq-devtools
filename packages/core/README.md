@@ -21,6 +21,7 @@ const task = await client.submit("youtube", "videos", {
   urls: ["https://www.youtube.com/watch?v=VIDEO_ID"],
 });
 const completed = await client.waitTask(task.task_id);
+const downloaded = await client.downloadFiles(task.task_id, "./socq-results");
 ```
 
 Set `SOCQ_BASE_URL` or pass `baseUrl` to target another SocQ environment. The default is `https://api.socq.ai`.

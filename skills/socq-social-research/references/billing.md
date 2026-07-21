@@ -2,6 +2,11 @@
 
 Read the capability's `billing` object before submitting. Price and availability come from the live Capability Registry and can change without a Skill update.
 
+- `mode: fixed`: use `credits` as the request price.
+- `mode: input_count`: combine `base_credits`, `unit_credits`, and `unit_size` for submitted inputs.
+- `mode: base_plus_result`: combine the base price with the per-result rate; the final charge depends on returned records.
+- `dynamic: true`: do not interpret a zero base price as a free request.
+
 Before a large job:
 
 1. Call `socq_account` or `socq account`.

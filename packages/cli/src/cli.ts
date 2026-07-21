@@ -2,10 +2,11 @@ import {createInterface} from "node:readline/promises";
 import {stdin, stdout} from "node:process";
 import {Writable} from "node:stream";
 import {
-  clearConfig,
+  clearStoredCredential,
   loadConfig,
+  loadStoredCredential,
   maskApiKey,
-  saveConfig,
+  storeApiKey,
   SocqApiError,
   SocqClient,
   type Capability,
@@ -25,9 +26,11 @@ export async function runCli(argv: string[]): Promise<number> {
 
   if (command === "auth") return authCommand(subcommand, parsed);
   if (command === "mcp") {
+    const config = await loadConfig();
+    const stored = await loadStoredCredential(config);
     await runProxy({
       url: stringOption(parsed, "url") ?? process.env.SOCQ_MCP_URL,
-      apiKey: stringOption(parsed, "api-key") ?? process.env.SOCQ_API_KEY ?? (await loadConfig()).apiKey,
+      apiKey: stringOption(parsed, "api-key") ?? process.env.SOCQ_API_KEY ?? stored.apiKey,
       platforms: stringOption(parsed, "platforms"),
       tools: stringOption(parsed, "tools"),
     });
@@ -35,9 +38,11 @@ export async function runCli(argv: string[]): Promise<number> {
   }
 
   const config = await loadConfig();
+  const publicCommand = command === "platforms" || command === "tools" || command === "describe";
+  const stored = publicCommand ? {source: "none" as const, apiKey: undefined} : await loadStoredCredential(config);
   const client = new SocqClient({
     baseUrl: stringOption(parsed, "base-url") ?? process.env.SOCQ_BASE_URL ?? config.baseUrl,
-    apiKey: stringOption(parsed, "api-key") ?? process.env.SOCQ_API_KEY ?? config.apiKey,
+    apiKey: stringOption(parsed, "api-key") ?? process.env.SOCQ_API_KEY ?? stored.apiKey,
     source: "cli",
   });
   const format = outputFormat(parsed);
@@ -106,7 +111,12 @@ async function taskCommand(
   format: OutputFormat,
   output?: string,
 ): Promise<number> {
-  if (!action || !taskId) throw new Error("Usage: socq task get|wait|results|files TASK_ID");
+  if (!action || !taskId) throw new Error("Usage: socq task get|wait|results|files|download TASK_ID");
+  if (action === "download") {
+    const directory = stringOption(parsed, "directory") ?? `socq-${taskId}`;
+    await renderOutput(await client.downloadFiles(taskId, directory), format, output);
+    return 0;
+  }
   if (action === "files") {
     await renderOutput(await client.files(taskId), format, output);
     return 0;
@@ -122,11 +132,16 @@ async function taskCommand(
 async function authCommand(action: string | undefined, parsed: ParsedArgs): Promise<number> {
   const config = await loadConfig();
   if (action === "status") {
-    process.stdout.write(`${maskApiKey(process.env.SOCQ_API_KEY ?? config.apiKey)}\n`);
+    if (process.env.SOCQ_API_KEY) {
+      process.stdout.write(`${maskApiKey(process.env.SOCQ_API_KEY)} (environment)\n`);
+      return 0;
+    }
+    const stored = await loadStoredCredential(config);
+    process.stdout.write(`${maskApiKey(stored.apiKey)} (${stored.source})\n`);
     return 0;
   }
   if (action === "clear") {
-    await clearConfig();
+    await clearStoredCredential();
     process.stdout.write("SocQ credentials cleared.\n");
     return 0;
   }
@@ -141,8 +156,8 @@ async function authCommand(action: string | undefined, parsed: ParsedArgs): Prom
     stdout.write("\n");
   }
   if (!apiKey) throw new Error("API key cannot be empty");
-  await saveConfig({apiKey, baseUrl: stringOption(parsed, "base-url") ?? config.baseUrl});
-  process.stdout.write(`Saved ${maskApiKey(apiKey)} to the local SocQ config.\n`);
+  const source = await storeApiKey(apiKey, stringOption(parsed, "base-url") ?? config.baseUrl);
+  process.stdout.write(`Saved ${maskApiKey(apiKey)} using ${source === "keyring" ? "the system keyring" : "the local fallback config"}.\n`);
   return 0;
 }
 
@@ -168,4 +183,4 @@ export function exitCodeFor(error: unknown): number {
   return 2;
 }
 
-const HELP = `SocQ CLI\n\nUsage:\n  socq auth login|status|clear\n  socq platforms\n  socq tools [platform]\n  socq describe PLATFORM/RESOURCE\n  socq run PLATFORM RESOURCE [--input JSON | --input-file FILE]\n  socq PLATFORM RESOURCE [endpoint flags]\n  socq task get|wait|results|files TASK_ID\n  socq account\n  socq mcp [--platforms LIST | --tools LIST]\n\nGlobal output: --format table|json|jsonl|csv --output FILE\nAuthentication priority: --api-key, SOCQ_API_KEY, local config. Avoid --api-key in shell history.\n`;
+const HELP = `SocQ CLI\n\nUsage:\n  socq auth login|status|clear\n  socq platforms\n  socq tools [platform]\n  socq describe PLATFORM/RESOURCE\n  socq run PLATFORM RESOURCE [--input JSON | --input-file FILE]\n  socq PLATFORM RESOURCE [endpoint flags]\n  socq task get|wait|results|files|download TASK_ID\n  socq account\n  socq mcp [--platforms LIST | --tools LIST]\n\nGlobal output: --format table|json|jsonl|csv --output FILE\nAuthentication priority: --api-key, SOCQ_API_KEY, system keyring, local fallback config. Avoid --api-key in shell history.\n`;

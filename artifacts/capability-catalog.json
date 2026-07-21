@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-d18678b71b32",
+  "schema_version": "v1-063d1c96173a",
   "platforms": [
     {
       "platform": "facebook",
@@ -244,12 +244,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "url": "https://www.facebook.com/ads/library/?id=123456789012345"
+        }
+      ],
       "tags": [
         "facebook-ad-library",
         "ad"
@@ -400,12 +408,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "page_id": "20531316728"
+        }
+      ],
       "tags": [
         "facebook-ad-library",
         "company-ads"
@@ -523,12 +539,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "Nike"
+        }
+      ],
       "tags": [
         "facebook-ad-library",
         "company-search"
@@ -683,12 +707,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "running shoes"
+        }
+      ],
       "tags": [
         "facebook-ad-library",
         "search"
@@ -810,12 +842,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/marketplace/item/123456789012345/"
+          ]
+        }
+      ],
       "tags": [
         "facebook-marketplace",
         "item"
@@ -933,12 +975,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "San Francisco"
+        }
+      ],
       "tags": [
         "facebook-marketplace",
         "location-search"
@@ -1105,12 +1155,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "standing desk",
+          "latitude": 37.7749,
+          "longitude": -122.4194
+        }
+      ],
       "tags": [
         "facebook-marketplace",
         "search"
@@ -1148,7 +1208,9 @@
             "description": "Public profile or content URLs."
           }
         },
-        "required": []
+        "required": [
+          "urls"
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1234,12 +1296,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/nasa/posts/1234567890"
+          ]
+        }
+      ],
       "tags": [
         "facebook",
         "comments"
@@ -1296,7 +1368,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1382,12 +1471,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "nasa"
+          ]
+        }
+      ],
       "tags": [
         "facebook",
         "pages"
@@ -1444,7 +1543,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1530,12 +1646,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.facebook.com/nasa"
+          ]
+        }
+      ],
       "tags": [
         "facebook",
         "posts"
@@ -1573,7 +1699,9 @@
             "description": "Public profile or content URLs."
           }
         },
-        "required": []
+        "required": [
+          "urls"
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1659,12 +1787,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.instagram.com/p/ABC123xyz/"
+          ]
+        }
+      ],
       "tags": [
         "instagram",
         "comments"
@@ -1721,7 +1859,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1807,12 +1962,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "instagram"
+          ]
+        }
+      ],
       "tags": [
         "instagram",
         "followers-count"
@@ -1869,7 +2034,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -1955,12 +2137,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "instagram"
+          ]
+        }
+      ],
       "tags": [
         "instagram",
         "posts"
@@ -2017,7 +2209,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -2103,12 +2312,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "instagram"
+          ]
+        }
+      ],
       "tags": [
         "instagram",
         "reels"
@@ -2165,7 +2384,24 @@
             "description": "Public account usernames."
           }
         },
-        "required": []
+        "required": [],
+        "anyOf": [
+          {
+            "required": [
+              "query"
+            ]
+          },
+          {
+            "required": [
+              "urls"
+            ]
+          },
+          {
+            "required": [
+              "usernames"
+            ]
+          }
+        ]
       },
       "output_schema": {
         "type": "object",
@@ -2251,12 +2487,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "travel photography"
+        }
+      ],
       "tags": [
         "instagram",
         "search"
@@ -2378,12 +2622,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.linkedin.com/company/microsoft/"
+          ]
+        }
+      ],
       "tags": [
         "linkedin",
         "companies"
@@ -2505,12 +2759,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.linkedin.com/jobs/view/1234567890/"
+          ]
+        }
+      ],
       "tags": [
         "linkedin",
         "jobs"
@@ -2632,12 +2896,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.linkedin.com/posts/microsoft_ai-activity-1234567890"
+          ]
+        }
+      ],
       "tags": [
         "linkedin",
         "posts"
@@ -2759,12 +3033,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.linkedin.com/in/satyanadella/"
+          ]
+        }
+      ],
       "tags": [
         "linkedin",
         "profiles"
@@ -2886,12 +3170,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.pinterest.com/pin/123456789012345678/"
+          ]
+        }
+      ],
       "tags": [
         "pinterest",
         "pins"
@@ -3013,12 +3307,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.pinterest.com/pinterest/"
+          ]
+        }
+      ],
       "tags": [
         "pinterest",
         "profiles"
@@ -3141,12 +3445,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "home office ideas"
+        }
+      ],
       "tags": [
         "pinterest",
         "search"
@@ -3273,12 +3585,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.pinterest.com/pinterest/"
+          ]
+        }
+      ],
       "tags": [
         "pinterest",
         "user-pins"
@@ -3400,12 +3722,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
+          ]
+        }
+      ],
       "tags": [
         "reddit",
         "comments"
@@ -3527,12 +3859,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.reddit.com/r/technology/comments/abc123/example_post/"
+          ]
+        }
+      ],
       "tags": [
         "reddit",
         "posts"
@@ -3659,12 +4001,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "AI agents"
+        }
+      ],
       "tags": [
         "reddit",
         "search"
@@ -3795,12 +4145,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.reddit.com/r/technology/"
+          ]
+        }
+      ],
       "tags": [
         "reddit",
         "subreddit-posts"
@@ -3922,12 +4282,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.threads.net/@instagram/post/ABC123/"
+          ]
+        }
+      ],
       "tags": [
         "threads",
         "posts"
@@ -4049,12 +4419,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.threads.net/@instagram/"
+          ]
+        }
+      ],
       "tags": [
         "threads",
         "profiles"
@@ -4181,12 +4561,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.threads.net/@instagram/"
+          ]
+        }
+      ],
       "tags": [
         "threads",
         "user-posts"
@@ -4308,12 +4698,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
+        }
+      ],
       "tags": [
         "tiktok-shop",
         "product"
@@ -4440,12 +4838,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "url": "https://www.tiktok.com/shop/pdp/example-product/1234567890123456789"
+        }
+      ],
       "tags": [
         "tiktok-shop",
         "product-reviews"
@@ -4576,12 +4982,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "url": "https://www.tiktok.com/shop/store/example-store/1234567890123456789"
+        }
+      ],
       "tags": [
         "tiktok-shop",
         "products"
@@ -4708,12 +5122,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "wireless earbuds"
+        }
+      ],
       "tags": [
         "tiktok-shop",
         "search"
@@ -4840,12 +5262,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "username": "example_creator"
+        }
+      ],
       "tags": [
         "tiktok-shop",
         "user-showcase"
@@ -4972,12 +5402,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.tiktok.com/@scout2015/video/6718335390845095173"
+          ]
+        }
+      ],
       "tags": [
         "tiktok",
         "comments"
@@ -5104,12 +5544,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "hashtags": [
+            "#travel"
+          ]
+        }
+      ],
       "tags": [
         "tiktok",
         "hashtags"
@@ -5231,12 +5681,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "@tiktok"
+          ]
+        }
+      ],
       "tags": [
         "tiktok",
         "profiles"
@@ -5367,12 +5827,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "AI tools"
+        }
+      ],
       "tags": [
         "tiktok",
         "search"
@@ -5494,12 +5962,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.tiktok.com/@scout2015/video/6718335390845095173"
+          ]
+        }
+      ],
       "tags": [
         "tiktok",
         "videos"
@@ -5621,12 +6099,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://x.com/X/status/1234567890123456789"
+          ]
+        }
+      ],
       "tags": [
         "x",
         "posts"
@@ -5748,12 +6236,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "@X"
+          ]
+        }
+      ],
       "tags": [
         "x",
         "profiles"
@@ -5880,12 +6378,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "AI agents"
+        }
+      ],
       "tags": [
         "x",
         "search"
@@ -6012,12 +6518,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "usernames": [
+            "@X"
+          ]
+        }
+      ],
       "tags": [
         "x",
         "user-posts"
@@ -6144,12 +6660,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/@YouTube"
+          ]
+        }
+      ],
       "tags": [
         "youtube",
         "channel-videos"
@@ -6271,12 +6797,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/@YouTube"
+          ]
+        }
+      ],
       "tags": [
         "youtube",
         "channels"
@@ -6407,12 +6943,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          ]
+        }
+      ],
       "tags": [
         "youtube",
         "comments"
@@ -6550,12 +7096,20 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "query": "AI agents tutorial"
+        }
+      ],
       "tags": [
         "youtube",
         "search"
@@ -6682,12 +7236,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/@YouTube"
+          ]
+        }
+      ],
       "tags": [
         "youtube",
         "shorts"
@@ -6813,12 +7377,23 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          ],
+          "language": "en"
+        }
+      ],
       "tags": [
         "youtube",
         "transcripts"
@@ -6940,12 +7515,22 @@
         }
       },
       "billing": {
+        "mode": "fixed",
         "credits": null,
+        "base_credits": null,
         "unit": "request",
+        "unit_size": 1,
+        "unit_credits": null,
         "config": {},
         "dynamic": true
       },
-      "examples": [],
+      "examples": [
+        {
+          "urls": [
+            "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          ]
+        }
+      ],
       "tags": [
         "youtube",
         "videos"

@@ -11,7 +11,8 @@
   "scripts": {
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
-    "test": "pnpm -r test",
+    "test": "vitest run packages && node scripts/check-skill-coverage.mjs",
+    "skill:check": "node scripts/check-skill-coverage.mjs",
     "release:check": "node scripts/check-release.mjs",
     "sync:catalog": "tsx scripts/sync-catalog.ts",
     "generate:skills": "tsx scripts/generate-skill-references.ts"

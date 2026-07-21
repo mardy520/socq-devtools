@@ -55,6 +55,23 @@ export interface TaskData {
   poll_after_seconds?: number;
 }
 
+export interface TaskFile {
+  file_type: string;
+  public_url: string;
+  file_size?: number | null;
+  item_count?: number | null;
+  expires_at?: string | null;
+}
+
+export interface TaskFiles {
+  task_id: string;
+  items: TaskFile[];
+}
+
+export interface DownloadedTaskFile extends TaskFile {
+  path: string;
+}
+
 export interface ClientOptions {
   baseUrl?: string;
   apiKey?: string;

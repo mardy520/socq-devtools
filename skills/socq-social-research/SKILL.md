@@ -22,13 +22,26 @@ Never place an API key in a prompt, query string, committed file, or shell comma
 
 1. Restate the requested platforms, entities, date range, and result volume.
 2. Search the Capability Registry, then describe the selected endpoint before constructing input. Read [catalog.md](references/catalog.md) when tool discovery is unavailable.
-3. Prefer direct URLs or canonical usernames over broad keyword search when the user supplies them.
-4. Check account credits before a large or cross-platform run. Read [billing.md](references/billing.md) for cost controls.
-5. Submit with a reusable idempotency key when a transport retry is possible.
-6. Treat `queued` and `running` as incomplete. Poll until `succeeded` or `failed`; follow [async-tasks.md](references/async-tasks.md).
-7. Follow every `next_cursor` needed for the requested scope, respecting a user-provided result cap. Read [pagination.md](references/pagination.md).
-8. Use task files for complete raw JSONL exports when normalized pages are insufficient.
-9. Report partial coverage, failed platforms, filters, and collection time with the results.
+3. Read the matching platform reference before choosing inputs or constructing a payload:
+   [Facebook](references/platforms/facebook.md),
+   [Facebook Ad Library](references/platforms/facebook-ad-library.md),
+   [Facebook Marketplace](references/platforms/facebook-marketplace.md),
+   [Instagram](references/platforms/instagram.md),
+   [LinkedIn](references/platforms/linkedin.md),
+   [Pinterest](references/platforms/pinterest.md),
+   [Reddit](references/platforms/reddit.md),
+   [Threads](references/platforms/threads.md),
+   [TikTok](references/platforms/tiktok.md),
+   [TikTok Shop](references/platforms/tiktok-shop.md),
+   [X](references/platforms/x.md), or
+   [YouTube](references/platforms/youtube.md).
+4. Prefer direct URLs or canonical usernames over broad keyword search when the user supplies them.
+5. Check account credits before a large or cross-platform run. Read [billing.md](references/billing.md) for cost controls.
+6. Submit with a reusable idempotency key when a transport retry is possible.
+7. Treat `queued` and `running` as incomplete. Poll until `succeeded` or `failed`; follow [async-tasks.md](references/async-tasks.md).
+8. Follow every `next_cursor` needed for the requested scope, respecting a user-provided result cap. Read [pagination.md](references/pagination.md).
+9. Use task files for complete raw JSONL exports when normalized pages are insufficient.
+10. Report partial coverage, failed platforms, filters, and collection time with the results.
 
 For research spanning multiple networks, follow [cross-platform.md](references/cross-platform.md). For authentication, rate limits, provider failures, and recovery, follow [errors.md](references/errors.md).
 

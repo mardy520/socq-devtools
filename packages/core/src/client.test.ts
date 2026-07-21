@@ -1,3 +1,6 @@
+import {mkdtemp, readFile, rm} from "node:fs/promises";
+import {tmpdir} from "node:os";
+import {join} from "node:path";
 import {describe, expect, it, vi} from "vitest";
 import {SocqClient} from "./client.js";
 
@@ -21,5 +24,31 @@ describe("SocqClient", () => {
     await client.catalog();
     const calls = fetchMock.mock.calls as unknown as Array<[RequestInfo | URL, RequestInit?]>;
     expect((calls[1][1] as RequestInit).headers).toMatchObject({"If-None-Match": '"abc"'});
+  });
+
+  it("downloads task files without forwarding the API key to signed URLs", async () => {
+    const directory = await mkdtemp(join(tmpdir(), "socq-download-"));
+    try {
+      const fetchMock = vi.fn()
+        .mockResolvedValueOnce(new Response(JSON.stringify({
+          code: 200,
+          data: {
+            task_id: "t1",
+            items: [{file_type: "jsonl", public_url: "https://files.test/result.jsonl"}],
+          },
+        })))
+        .mockResolvedValueOnce(new Response('{"id":1}\n'));
+      const client = new SocqClient({baseUrl: "https://api.test", apiKey: "sk-test", fetch: fetchMock as typeof fetch});
+
+      const downloaded = await client.downloadFiles("t1", directory);
+
+      expect(downloaded).toHaveLength(1);
+      expect(await readFile(downloaded[0].path, "utf8")).toBe('{"id":1}\n');
+      const calls = fetchMock.mock.calls as unknown as Array<[RequestInfo | URL, RequestInit?]>;
+      expect(calls[0][1]?.headers).toMatchObject({Authorization: "Bearer sk-test"});
+      expect(calls[1][1]).toBeUndefined();
+    } finally {
+      await rm(directory, {recursive: true, force: true});
+    }
   });
 });

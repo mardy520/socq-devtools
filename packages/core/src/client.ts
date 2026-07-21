@@ -1,4 +1,9 @@
-import type {Capability, CatalogData, ClientOptions, TaskData} from "./types.js";
+import {createWriteStream} from "node:fs";
+import {mkdir} from "node:fs/promises";
+import {basename, extname, resolve} from "node:path";
+import {Readable} from "node:stream";
+import {pipeline} from "node:stream/promises";
+import type {Capability, CatalogData, ClientOptions, DownloadedTaskFile, TaskData, TaskFiles} from "./types.js";
 
 export class SocqApiError extends Error {
   constructor(
@@ -72,11 +77,28 @@ export class SocqClient {
     return (await this.parseResponse<{code: number; data: TaskData}>(response)).data;
   }
 
-  async files(taskId: string): Promise<unknown> {
+  async files(taskId: string): Promise<TaskFiles> {
     const response = await this.fetchImpl(this.url(`/v1/tasks/${encodeURIComponent(taskId)}/files`), {
       headers: this.authHeaders(),
     });
-    return (await this.parseResponse<{code: number; data: unknown}>(response)).data;
+    return (await this.parseResponse<{code: number; data: TaskFiles}>(response)).data;
+  }
+
+  async downloadFiles(taskId: string, directory: string): Promise<DownloadedTaskFile[]> {
+    const files = await this.files(taskId);
+    const outputDirectory = resolve(directory);
+    await mkdir(outputDirectory, {recursive: true});
+    const downloaded: DownloadedTaskFile[] = [];
+    for (const [index, file] of files.items.entries()) {
+      const response = await this.fetchImpl(file.public_url);
+      if (!response.ok || !response.body) {
+        throw new SocqApiError(`SocQ result file download failed (${response.status})`, response.status);
+      }
+      const path = resolve(outputDirectory, taskFileName(taskId, index, file.file_type, file.public_url));
+      await pipeline(Readable.fromWeb(response.body as never), createWriteStream(path));
+      downloaded.push({...file, path});
+    }
+    return downloaded;
   }
 
   async account(): Promise<unknown> {
@@ -130,6 +152,19 @@ export class SocqClient {
     }
     return payload as T;
   }
+}
+
+function taskFileName(taskId: string, index: number, fileType: string, publicUrl: string): string {
+  let remoteName = "";
+  try {
+    remoteName = basename(new URL(publicUrl).pathname);
+  } catch {
+    remoteName = "";
+  }
+  const safeRemoteName = remoteName.replace(/[^A-Za-z0-9._-]/g, "_");
+  const extension = extname(safeRemoteName)
+    || `.${String(fileType || "jsonl").replace(/[^A-Za-z0-9]/g, "") || "jsonl"}`;
+  return `${taskId}-${index + 1}${extension}`;
 }
 
 export function normalizeEndpoint(value: string): string {
