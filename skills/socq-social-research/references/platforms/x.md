@@ -6,10 +6,10 @@ Generated from SocQ Capability Registry schema `v1-063d1c96173a`. Read this file
 
 | Endpoint | Use for | Input choice | Cost |
 | --- | --- | --- | --- |
-| [`x/posts`](https://docs.socq.ai/api-manual/x/posts) | Fetch normalized posts data from X. | urls | live pricing |
-| [`x/profiles`](https://docs.socq.ai/api-manual/x/profiles) | Fetch normalized profiles data from X. | usernames | live pricing |
-| [`x/search`](https://docs.socq.ai/api-manual/x/search) | Fetch normalized search data from X. | query | live pricing |
-| [`x/user-posts`](https://docs.socq.ai/api-manual/x/user-posts) | Fetch normalized user posts data from X. | usernames | live pricing |
+| [`x/posts`](https://docs.socq.ai/api-manual/x/posts) | X Posts API | urls | 0.5 credits/result |
+| [`x/profiles`](https://docs.socq.ai/api-manual/x/profiles) | X Profiles API | usernames | 0.6 credits/result |
+| [`x/search`](https://docs.socq.ai/api-manual/x/search) | X Search API | query | 0.7 credits/result |
+| [`x/user-posts`](https://docs.socq.ai/api-manual/x/user-posts) | X User Posts API | usernames | 0.5 credits/result |
 
 ## Validated examples
 

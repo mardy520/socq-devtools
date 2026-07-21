@@ -6,11 +6,11 @@ Generated from SocQ Capability Registry schema `v1-063d1c96173a`. Read this file
 
 | Endpoint | Use for | Input choice | Cost |
 | --- | --- | --- | --- |
-| [`instagram/comments`](https://docs.socq.ai/api-manual/instagram/comments) | Fetch normalized comments data from Instagram. | urls | live pricing |
-| [`instagram/followers-count`](https://docs.socq.ai/api-manual/instagram/followers-count) | Fetch normalized followers count data from Instagram. | one of query, urls, usernames | live pricing |
-| [`instagram/posts`](https://docs.socq.ai/api-manual/instagram/posts) | Fetch normalized posts data from Instagram. | one of query, urls, usernames | live pricing |
-| [`instagram/reels`](https://docs.socq.ai/api-manual/instagram/reels) | Fetch normalized reels data from Instagram. | one of query, urls, usernames | live pricing |
-| [`instagram/search`](https://docs.socq.ai/api-manual/instagram/search) | Fetch normalized search data from Instagram. | one of query, urls, usernames | live pricing |
+| [`instagram/comments`](https://docs.socq.ai/api-manual/instagram/comments) | Instagram Comments API | urls | 0.3 credits/result |
+| [`instagram/followers-count`](https://docs.socq.ai/api-manual/instagram/followers-count) | Instagram Followers Count API | one of query, urls, usernames | 0.52 credits/result |
+| [`instagram/posts`](https://docs.socq.ai/api-manual/instagram/posts) | Instagram Post API | one of query, urls, usernames | 0.34 credits/result |
+| [`instagram/reels`](https://docs.socq.ai/api-manual/instagram/reels) | Instagram Reel API | one of query, urls, usernames | 0.52 credits/result |
+| [`instagram/search`](https://docs.socq.ai/api-manual/instagram/search) | Instagram Search API | one of query, urls, usernames | 0.54 credits/result |
 
 ## Validated examples
 

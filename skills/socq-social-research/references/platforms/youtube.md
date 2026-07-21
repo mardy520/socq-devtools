@@ -6,13 +6,13 @@ Generated from SocQ Capability Registry schema `v1-063d1c96173a`. Read this file
 
 | Endpoint | Use for | Input choice | Cost |
 | --- | --- | --- | --- |
-| [`youtube/channel-videos`](https://docs.socq.ai/api-manual/youtube/channel-videos) | Fetch normalized channel videos data from Youtube. | urls | live pricing |
-| [`youtube/channels`](https://docs.socq.ai/api-manual/youtube/channels) | Fetch normalized channels data from Youtube. | urls | live pricing |
-| [`youtube/comments`](https://docs.socq.ai/api-manual/youtube/comments) | Fetch normalized comments data from Youtube. | urls | live pricing |
-| [`youtube/search`](https://docs.socq.ai/api-manual/youtube/search) | Fetch normalized search data from Youtube. | query | live pricing |
-| [`youtube/shorts`](https://docs.socq.ai/api-manual/youtube/shorts) | Fetch normalized shorts data from Youtube. | urls | live pricing |
-| [`youtube/transcripts`](https://docs.socq.ai/api-manual/youtube/transcripts) | Fetch normalized transcripts data from Youtube. | urls | live pricing |
-| [`youtube/videos`](https://docs.socq.ai/api-manual/youtube/videos) | Fetch normalized videos data from Youtube. | urls | live pricing |
+| [`youtube/channel-videos`](https://docs.socq.ai/api-manual/youtube/channel-videos) | YouTube Channel Videos API | urls | 0.5 credits/result |
+| [`youtube/channels`](https://docs.socq.ai/api-manual/youtube/channels) | YouTube Channels API | urls | 0.26 credits/result |
+| [`youtube/comments`](https://docs.socq.ai/api-manual/youtube/comments) | YouTube Comments API | urls | 0.3 credits/result |
+| [`youtube/search`](https://docs.socq.ai/api-manual/youtube/search) | YouTube Search API | query | 0.5 credits/result |
+| [`youtube/shorts`](https://docs.socq.ai/api-manual/youtube/shorts) | YouTube Shorts API | urls | 0.5 credits/result |
+| [`youtube/transcripts`](https://docs.socq.ai/api-manual/youtube/transcripts) | YouTube Transcripts API | urls | 0.5 credits/result |
+| [`youtube/videos`](https://docs.socq.ai/api-manual/youtube/videos) | YouTube Videos API | urls | 0.5 credits/result |
 
 ## Validated examples
 

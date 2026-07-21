@@ -4,54 +4,54 @@ Generated from SocQ Capability Registry schema `v1-063d1c96173a`. Do not edit en
 
 | Endpoint | Purpose | Required input | Cost |
 | --- | --- | --- | --- |
-| [`facebook-ad-library/ad`](https://docs.socq.ai/api-manual/facebook-ad-library/ad) | Fetch normalized ad data from Facebook Ad Library. | url | live pricing |
-| [`facebook-ad-library/company-ads`](https://docs.socq.ai/api-manual/facebook-ad-library/company-ads) | Fetch normalized company ads data from Facebook Ad Library. | page_id | live pricing |
-| [`facebook-ad-library/company-search`](https://docs.socq.ai/api-manual/facebook-ad-library/company-search) | Fetch normalized company search data from Facebook Ad Library. | query | live pricing |
-| [`facebook-ad-library/search`](https://docs.socq.ai/api-manual/facebook-ad-library/search) | Fetch normalized search data from Facebook Ad Library. | query | live pricing |
-| [`facebook-marketplace/item`](https://docs.socq.ai/api-manual/facebook-marketplace/item) | Fetch normalized item data from Facebook Marketplace. | urls | live pricing |
-| [`facebook-marketplace/location-search`](https://docs.socq.ai/api-manual/facebook-marketplace/location-search) | Fetch normalized location search data from Facebook Marketplace. | query | live pricing |
-| [`facebook-marketplace/search`](https://docs.socq.ai/api-manual/facebook-marketplace/search) | Fetch normalized search data from Facebook Marketplace. | latitude, longitude, query | live pricing |
-| [`facebook/comments`](https://docs.socq.ai/api-manual/facebook/comments) | Fetch normalized comments data from Facebook. | urls | live pricing |
-| [`facebook/pages`](https://docs.socq.ai/api-manual/facebook/pages) | Fetch normalized pages data from Facebook. | one of query, urls, usernames | live pricing |
-| [`facebook/posts`](https://docs.socq.ai/api-manual/facebook/posts) | Fetch normalized posts data from Facebook. | one of query, urls, usernames | live pricing |
-| [`instagram/comments`](https://docs.socq.ai/api-manual/instagram/comments) | Fetch normalized comments data from Instagram. | urls | live pricing |
-| [`instagram/followers-count`](https://docs.socq.ai/api-manual/instagram/followers-count) | Fetch normalized followers count data from Instagram. | one of query, urls, usernames | live pricing |
-| [`instagram/posts`](https://docs.socq.ai/api-manual/instagram/posts) | Fetch normalized posts data from Instagram. | one of query, urls, usernames | live pricing |
-| [`instagram/reels`](https://docs.socq.ai/api-manual/instagram/reels) | Fetch normalized reels data from Instagram. | one of query, urls, usernames | live pricing |
-| [`instagram/search`](https://docs.socq.ai/api-manual/instagram/search) | Fetch normalized search data from Instagram. | one of query, urls, usernames | live pricing |
-| [`linkedin/companies`](https://docs.socq.ai/api-manual/linkedin/companies) | Fetch normalized companies data from Linkedin. | urls | live pricing |
-| [`linkedin/jobs`](https://docs.socq.ai/api-manual/linkedin/jobs) | Fetch normalized jobs data from Linkedin. | urls | live pricing |
-| [`linkedin/posts`](https://docs.socq.ai/api-manual/linkedin/posts) | Fetch normalized posts data from Linkedin. | urls | live pricing |
-| [`linkedin/profiles`](https://docs.socq.ai/api-manual/linkedin/profiles) | Fetch normalized profiles data from Linkedin. | urls | live pricing |
-| [`pinterest/pins`](https://docs.socq.ai/api-manual/pinterest/pins) | Fetch normalized pins data from Pinterest. | urls | live pricing |
-| [`pinterest/profiles`](https://docs.socq.ai/api-manual/pinterest/profiles) | Fetch normalized profiles data from Pinterest. | urls | live pricing |
-| [`pinterest/search`](https://docs.socq.ai/api-manual/pinterest/search) | Fetch normalized search data from Pinterest. | query | live pricing |
-| [`pinterest/user-pins`](https://docs.socq.ai/api-manual/pinterest/user-pins) | Fetch normalized user pins data from Pinterest. | urls | live pricing |
-| [`reddit/comments`](https://docs.socq.ai/api-manual/reddit/comments) | Fetch normalized comments data from Reddit. | urls | live pricing |
-| [`reddit/posts`](https://docs.socq.ai/api-manual/reddit/posts) | Fetch normalized posts data from Reddit. | urls | live pricing |
-| [`reddit/search`](https://docs.socq.ai/api-manual/reddit/search) | Fetch normalized search data from Reddit. | query | live pricing |
-| [`reddit/subreddit-posts`](https://docs.socq.ai/api-manual/reddit/subreddit-posts) | Fetch normalized subreddit posts data from Reddit. | urls | live pricing |
-| [`threads/posts`](https://docs.socq.ai/api-manual/threads/posts) | Fetch normalized posts data from Threads. | urls | live pricing |
-| [`threads/profiles`](https://docs.socq.ai/api-manual/threads/profiles) | Fetch normalized profiles data from Threads. | urls | live pricing |
-| [`threads/user-posts`](https://docs.socq.ai/api-manual/threads/user-posts) | Fetch normalized user posts data from Threads. | urls | live pricing |
-| [`tiktok-shop/product`](https://docs.socq.ai/api-manual/tiktok-shop/product) | Fetch normalized product data from TikTok Shop. | url | live pricing |
-| [`tiktok-shop/product-reviews`](https://docs.socq.ai/api-manual/tiktok-shop/product-reviews) | Fetch normalized product reviews data from TikTok Shop. | url | live pricing |
-| [`tiktok-shop/products`](https://docs.socq.ai/api-manual/tiktok-shop/products) | Fetch normalized products data from TikTok Shop. | url | live pricing |
-| [`tiktok-shop/search`](https://docs.socq.ai/api-manual/tiktok-shop/search) | Fetch normalized search data from TikTok Shop. | query | live pricing |
-| [`tiktok-shop/user-showcase`](https://docs.socq.ai/api-manual/tiktok-shop/user-showcase) | Fetch normalized user showcase data from TikTok Shop. | username | live pricing |
-| [`tiktok/comments`](https://docs.socq.ai/api-manual/tiktok/comments) | Fetch normalized comments data from Tiktok. | urls | live pricing |
-| [`tiktok/hashtags`](https://docs.socq.ai/api-manual/tiktok/hashtags) | Fetch normalized hashtags data from Tiktok. | hashtags | live pricing |
-| [`tiktok/profiles`](https://docs.socq.ai/api-manual/tiktok/profiles) | Fetch normalized profiles data from Tiktok. | usernames | live pricing |
-| [`tiktok/search`](https://docs.socq.ai/api-manual/tiktok/search) | Fetch normalized search data from Tiktok. | query | live pricing |
-| [`tiktok/videos`](https://docs.socq.ai/api-manual/tiktok/videos) | Fetch normalized videos data from Tiktok. | urls | live pricing |
-| [`x/posts`](https://docs.socq.ai/api-manual/x/posts) | Fetch normalized posts data from X. | urls | live pricing |
-| [`x/profiles`](https://docs.socq.ai/api-manual/x/profiles) | Fetch normalized profiles data from X. | usernames | live pricing |
-| [`x/search`](https://docs.socq.ai/api-manual/x/search) | Fetch normalized search data from X. | query | live pricing |
-| [`x/user-posts`](https://docs.socq.ai/api-manual/x/user-posts) | Fetch normalized user posts data from X. | usernames | live pricing |
-| [`youtube/channel-videos`](https://docs.socq.ai/api-manual/youtube/channel-videos) | Fetch normalized channel videos data from Youtube. | urls | live pricing |
-| [`youtube/channels`](https://docs.socq.ai/api-manual/youtube/channels) | Fetch normalized channels data from Youtube. | urls | live pricing |
-| [`youtube/comments`](https://docs.socq.ai/api-manual/youtube/comments) | Fetch normalized comments data from Youtube. | urls | live pricing |
-| [`youtube/search`](https://docs.socq.ai/api-manual/youtube/search) | Fetch normalized search data from Youtube. | query | live pricing |
-| [`youtube/shorts`](https://docs.socq.ai/api-manual/youtube/shorts) | Fetch normalized shorts data from Youtube. | urls | live pricing |
-| [`youtube/transcripts`](https://docs.socq.ai/api-manual/youtube/transcripts) | Fetch normalized transcripts data from Youtube. | urls | live pricing |
-| [`youtube/videos`](https://docs.socq.ai/api-manual/youtube/videos) | Fetch normalized videos data from Youtube. | urls | live pricing |
+| [`facebook-ad-library/ad`](https://docs.socq.ai/api-manual/facebook-ad-library/ad) | Facebook Ad Library Ad API | url | 0.6 credits/result |
+| [`facebook-ad-library/company-ads`](https://docs.socq.ai/api-manual/facebook-ad-library/company-ads) | Facebook Ad Library Company Ads API | page_id | 0.5 credits/result |
+| [`facebook-ad-library/company-search`](https://docs.socq.ai/api-manual/facebook-ad-library/company-search) | Facebook Ad Library Company Search API | query | 0.5 credits/result |
+| [`facebook-ad-library/search`](https://docs.socq.ai/api-manual/facebook-ad-library/search) | Facebook Ad Library Search API | query | 0.5 credits/result |
+| [`facebook-marketplace/item`](https://docs.socq.ai/api-manual/facebook-marketplace/item) | Facebook Marketplace Item API | urls | 0.6 credits/result |
+| [`facebook-marketplace/location-search`](https://docs.socq.ai/api-manual/facebook-marketplace/location-search) | Facebook Marketplace Location Search API | query | 0.3 credits/result |
+| [`facebook-marketplace/search`](https://docs.socq.ai/api-manual/facebook-marketplace/search) | Facebook Marketplace Search API | latitude, longitude, query | 0.7 credits/result |
+| [`facebook/comments`](https://docs.socq.ai/api-manual/facebook/comments) | Facebook Comments API | urls | 0.3 credits/result |
+| [`facebook/pages`](https://docs.socq.ai/api-manual/facebook/pages) | Facebook Page API | one of query, urls, usernames | 2.4 credits/result |
+| [`facebook/posts`](https://docs.socq.ai/api-manual/facebook/posts) | Facebook Posts API | one of query, urls, usernames | 1 credits/result |
+| [`instagram/comments`](https://docs.socq.ai/api-manual/instagram/comments) | Instagram Comments API | urls | 0.3 credits/result |
+| [`instagram/followers-count`](https://docs.socq.ai/api-manual/instagram/followers-count) | Instagram Followers Count API | one of query, urls, usernames | 0.52 credits/result |
+| [`instagram/posts`](https://docs.socq.ai/api-manual/instagram/posts) | Instagram Post API | one of query, urls, usernames | 0.34 credits/result |
+| [`instagram/reels`](https://docs.socq.ai/api-manual/instagram/reels) | Instagram Reel API | one of query, urls, usernames | 0.52 credits/result |
+| [`instagram/search`](https://docs.socq.ai/api-manual/instagram/search) | Instagram Search API | one of query, urls, usernames | 0.54 credits/result |
+| [`linkedin/companies`](https://docs.socq.ai/api-manual/linkedin/companies) | LinkedIn Companies API | urls | 2 credits/result |
+| [`linkedin/jobs`](https://docs.socq.ai/api-manual/linkedin/jobs) | LinkedIn Jobs API | urls | 0.8 credits/result |
+| [`linkedin/posts`](https://docs.socq.ai/api-manual/linkedin/posts) | LinkedIn Posts API | urls | 1 credits/result |
+| [`linkedin/profiles`](https://docs.socq.ai/api-manual/linkedin/profiles) | LinkedIn Profiles API | urls | 2.5 credits/result |
+| [`pinterest/pins`](https://docs.socq.ai/api-manual/pinterest/pins) | Pinterest Pins API | urls | 0.5 credits/result |
+| [`pinterest/profiles`](https://docs.socq.ai/api-manual/pinterest/profiles) | Pinterest Profiles API | urls | 0.6 credits/result |
+| [`pinterest/search`](https://docs.socq.ai/api-manual/pinterest/search) | Pinterest Search API | query | 0.6 credits/result |
+| [`pinterest/user-pins`](https://docs.socq.ai/api-manual/pinterest/user-pins) | Pinterest User Pins API | urls | 0.5 credits/result |
+| [`reddit/comments`](https://docs.socq.ai/api-manual/reddit/comments) | Reddit Comments API | urls | 0.3 credits/result |
+| [`reddit/posts`](https://docs.socq.ai/api-manual/reddit/posts) | Reddit Posts API | urls | 0.5 credits/result |
+| [`reddit/search`](https://docs.socq.ai/api-manual/reddit/search) | Reddit Search API | query | 0.6 credits/result |
+| [`reddit/subreddit-posts`](https://docs.socq.ai/api-manual/reddit/subreddit-posts) | Reddit Subreddit Posts API | urls | 0.5 credits/result |
+| [`threads/posts`](https://docs.socq.ai/api-manual/threads/posts) | Threads Posts API | urls | 0.5 credits/result |
+| [`threads/profiles`](https://docs.socq.ai/api-manual/threads/profiles) | Threads Profiles API | urls | 0.6 credits/result |
+| [`threads/user-posts`](https://docs.socq.ai/api-manual/threads/user-posts) | Threads User Posts API | urls | 0.5 credits/result |
+| [`tiktok-shop/product`](https://docs.socq.ai/api-manual/tiktok-shop/product) | TikTok Shop Product API | url | 0.7 credits/result |
+| [`tiktok-shop/product-reviews`](https://docs.socq.ai/api-manual/tiktok-shop/product-reviews) | TikTok Shop Product Reviews API | url | 0.3 credits/result |
+| [`tiktok-shop/products`](https://docs.socq.ai/api-manual/tiktok-shop/products) | TikTok Shop Products API | url | 0.7 credits/result |
+| [`tiktok-shop/search`](https://docs.socq.ai/api-manual/tiktok-shop/search) | TikTok Shop Search API | query | 0.7 credits/result |
+| [`tiktok-shop/user-showcase`](https://docs.socq.ai/api-manual/tiktok-shop/user-showcase) | TikTok Shop User Showcase API | username | 0.7 credits/result |
+| [`tiktok/comments`](https://docs.socq.ai/api-manual/tiktok/comments) | TikTok Comments API | urls | 0.25 credits/result |
+| [`tiktok/hashtags`](https://docs.socq.ai/api-manual/tiktok/hashtags) | TikTok Hashtags API | hashtags | 0.7 credits/result |
+| [`tiktok/profiles`](https://docs.socq.ai/api-manual/tiktok/profiles) | TikTok Profiles API | usernames | 0.6 credits/result |
+| [`tiktok/search`](https://docs.socq.ai/api-manual/tiktok/search) | TikTok Search API | query | 0.7 credits/result |
+| [`tiktok/videos`](https://docs.socq.ai/api-manual/tiktok/videos) | TikTok Videos API | urls | 0.7 credits/result |
+| [`x/posts`](https://docs.socq.ai/api-manual/x/posts) | X Posts API | urls | 0.5 credits/result |
+| [`x/profiles`](https://docs.socq.ai/api-manual/x/profiles) | X Profiles API | usernames | 0.6 credits/result |
+| [`x/search`](https://docs.socq.ai/api-manual/x/search) | X Search API | query | 0.7 credits/result |
+| [`x/user-posts`](https://docs.socq.ai/api-manual/x/user-posts) | X User Posts API | usernames | 0.5 credits/result |
+| [`youtube/channel-videos`](https://docs.socq.ai/api-manual/youtube/channel-videos) | YouTube Channel Videos API | urls | 0.5 credits/result |
+| [`youtube/channels`](https://docs.socq.ai/api-manual/youtube/channels) | YouTube Channels API | urls | 0.26 credits/result |
+| [`youtube/comments`](https://docs.socq.ai/api-manual/youtube/comments) | YouTube Comments API | urls | 0.3 credits/result |
+| [`youtube/search`](https://docs.socq.ai/api-manual/youtube/search) | YouTube Search API | query | 0.5 credits/result |
+| [`youtube/shorts`](https://docs.socq.ai/api-manual/youtube/shorts) | YouTube Shorts API | urls | 0.5 credits/result |
+| [`youtube/transcripts`](https://docs.socq.ai/api-manual/youtube/transcripts) | YouTube Transcripts API | urls | 0.5 credits/result |
+| [`youtube/videos`](https://docs.socq.ai/api-manual/youtube/videos) | YouTube Videos API | urls | 0.5 credits/result |
