@@ -2,12 +2,22 @@
   "name": "@socq/mcp",
   "version": "0.1.0-beta.1",
   "description": "stdio bridge for the hosted SocQ MCP server",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mardy520/socq-devtools.git",
+    "directory": "packages/mcp"
+  },
+  "homepage": "https://docs.socq.ai/integrations/mcp",
+  "bugs": {
+    "url": "https://github.com/mardy520/socq-devtools/issues"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": "./dist/index.js",
   "bin": {"socq-mcp": "./dist/bin.js"},
-  "files": ["dist"],
+  "files": ["dist", "README.md", "LICENSE"],
   "publishConfig": {"access": "public"},
   "engines": {"node": ">=20"},
   "scripts": {

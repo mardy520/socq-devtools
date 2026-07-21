@@ -3,7 +3,6 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main]
 
 jobs:
   test:
@@ -24,3 +23,21 @@ jobs:
       - run: pnpm build
       - run: pnpm typecheck
       - run: pnpm test
+
+  package:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.13.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm --filter @socq/core publish --dry-run --no-git-checks --tag beta
+      - run: pnpm --filter @socq/mcp publish --dry-run --no-git-checks --tag beta
+      - run: pnpm --filter @socq/cli publish --dry-run --no-git-checks --tag beta

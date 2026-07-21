@@ -2,11 +2,21 @@
   "name": "@socq/cli",
   "version": "0.1.0-beta.1",
   "description": "Catalog-driven CLI for SocQ social data APIs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mardy520/socq-devtools.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://docs.socq.ai/integrations/cli",
+  "bugs": {
+    "url": "https://github.com/mardy520/socq-devtools/issues"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {"socq": "./dist/bin.js"},
-  "files": ["dist"],
+  "files": ["dist", "README.md", "LICENSE"],
   "publishConfig": {"access": "public"},
   "engines": {"node": ">=20"},
   "dependencies": {

@@ -2,11 +2,21 @@
   "name": "@socq/core",
   "version": "0.1.0-beta.1",
   "description": "Catalog-driven client for the SocQ Agent API",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mardy520/socq-devtools.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://docs.socq.ai/integrations/overview",
+  "bugs": {
+    "url": "https://github.com/mardy520/socq-devtools/issues"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": "./dist/index.js",
-  "files": ["dist"],
+  "files": ["dist", "README.md", "LICENSE"],
   "publishConfig": {"access": "public"},
   "engines": {"node": ">=20"},
   "scripts": {
