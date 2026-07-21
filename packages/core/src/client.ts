@@ -108,12 +108,27 @@ export class SocqClient {
 
   async waitTask(
     taskId: string,
-    options: {timeoutSeconds?: number; limit?: number; onPoll?: (task: TaskData) => void} = {},
+    options: {
+      timeoutSeconds?: number;
+      limit?: number;
+      onPoll?: (task: TaskData) => void;
+      notFoundGraceSeconds?: number;
+    } = {},
   ): Promise<TaskData> {
     const timeout = Math.max(1, options.timeoutSeconds ?? 90) * 1000;
     const deadline = Date.now() + timeout;
+    const notFoundDeadline = Date.now() + Math.max(0, options.notFoundGraceSeconds ?? 0) * 1000;
     while (true) {
-      const task = await this.task(taskId, {limit: options.limit});
+      let task: TaskData;
+      try {
+        task = await this.task(taskId, {limit: options.limit});
+      } catch (error) {
+        if (error instanceof SocqApiError && error.status === 404 && Date.now() < notFoundDeadline && Date.now() < deadline) {
+          await new Promise((resolve) => setTimeout(resolve, 2000));
+          continue;
+        }
+        throw error;
+      }
       options.onPoll?.(task);
       if (task.status === "succeeded" || task.status === "failed") return task;
       if (Date.now() >= deadline) throw new SocqApiError(`Timed out waiting for task ${taskId}`, 408, task);

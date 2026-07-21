@@ -95,6 +95,9 @@ async function execute(
     const completed = await client.waitTask(task.task_id, {
       timeoutSeconds: numberOption(parsed.options, "timeout", 90),
       limit: numberOption(parsed.options, "result-limit", 50),
+      // A newly submitted task can be briefly invisible while the request
+      // transaction finishes on another API worker.
+      notFoundGraceSeconds: 10,
     });
     await renderOutput(completed, format, output);
     return completed.status === "failed" ? 5 : 0;

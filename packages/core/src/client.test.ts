@@ -26,6 +26,25 @@ describe("SocqClient", () => {
     expect((calls[1][1] as RequestInit).headers).toMatchObject({"If-None-Match": '"abc"'});
   });
 
+  it("retries a transient 404 while waiting for a newly submitted task", async () => {
+    vi.useFakeTimers();
+    try {
+      const succeeded = {task_id: "t1", status: "succeeded", results: {items: []}};
+      const fetchMock = vi.fn()
+        .mockResolvedValueOnce(new Response(JSON.stringify({detail: "agent_task_not_found"}), {status: 404}))
+        .mockResolvedValueOnce(new Response(JSON.stringify({code: 200, data: succeeded}), {status: 200}));
+      const client = new SocqClient({baseUrl: "https://api.test", apiKey: "sk-test", fetch: fetchMock as typeof fetch});
+
+      const waiting = client.waitTask("t1", {timeoutSeconds: 20, notFoundGraceSeconds: 10});
+      await vi.runAllTimersAsync();
+
+      await expect(waiting).resolves.toMatchObject(succeeded);
+      expect(fetchMock).toHaveBeenCalledTimes(2);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("downloads task files without forwarding the API key to signed URLs", async () => {
     const directory = await mkdtemp(join(tmpdir(), "socq-download-"));
     try {
