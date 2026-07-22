@@ -5,7 +5,10 @@ const catalogPath = resolve(process.argv[2] ?? "artifacts/capability-catalog.jso
 const skillRoot = resolve("skills/socq-social-research");
 const catalog = JSON.parse(await readFile(catalogPath, "utf8"));
 const endpoints = Array.isArray(catalog.endpoints) ? catalog.endpoints : catalog.endpoints.items;
-if (endpoints.length !== 64) throw new Error(`Expected 64 endpoints, received ${endpoints.length}`);
+if (!endpoints.length) throw new Error("Capability Catalog contains no endpoints");
+if (!Array.isArray(catalog.endpoints) && catalog.endpoints.has_more) {
+  throw new Error("Capability Catalog artifact is incomplete; synchronize all endpoint pages");
+}
 if (new Set(endpoints.map((item) => item.public_id)).size !== endpoints.length) throw new Error("Duplicate public_id");
 
 for (const endpoint of endpoints) {
