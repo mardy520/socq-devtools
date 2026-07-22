@@ -1,6 +1,6 @@
 # Threads
 
-Generated from SocQ Capability Registry schema `v1-f704ad7a3630`. Read this file when the request targets Threads.
+Generated from SocQ Capability Registry schema `v1-57489840196e`. Read this file when the request targets Threads.
 
 ## Endpoint selection
 
