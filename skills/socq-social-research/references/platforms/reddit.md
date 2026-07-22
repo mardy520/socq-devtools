@@ -1,6 +1,6 @@
 # Reddit
 
-Generated from SocQ Capability Registry schema `v1-063d1c96173a`. Read this file when the request targets Reddit.
+Generated from SocQ Capability Registry schema `v1-f704ad7a3630`. Read this file when the request targets Reddit.
 
 ## Endpoint selection
 

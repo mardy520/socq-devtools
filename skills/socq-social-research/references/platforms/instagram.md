@@ -1,16 +1,22 @@
 # Instagram
 
-Generated from SocQ Capability Registry schema `v1-063d1c96173a`. Read this file when the request targets Instagram.
+Generated from SocQ Capability Registry schema `v1-f704ad7a3630`. Read this file when the request targets Instagram.
 
 ## Endpoint selection
 
 | Endpoint | Use for | Input choice | Cost |
 | --- | --- | --- | --- |
 | [`instagram/comments`](https://docs.socq.ai/api-manual/instagram/comments) | Instagram Comments API | urls | 0.3 credits/result |
+| [`instagram/followers`](https://docs.socq.ai/api-manual/instagram/followers) | Collect public profiles from an Instagram account follower list. | usernames | 0.3 credits/result |
 | [`instagram/followers-count`](https://docs.socq.ai/api-manual/instagram/followers-count) | Instagram Followers Count API | one of query, urls, usernames | 0.52 credits/result |
+| [`instagram/following`](https://docs.socq.ai/api-manual/instagram/following) | Collect public profiles followed by an Instagram account. | usernames | 0.3 credits/result |
+| [`instagram/hashtag-posts`](https://docs.socq.ai/api-manual/instagram/hashtag-posts) | Collect public Instagram posts matching a hashtag. | hashtags | 0.5 credits/result |
 | [`instagram/posts`](https://docs.socq.ai/api-manual/instagram/posts) | Instagram Post API | one of query, urls, usernames | 0.34 credits/result |
+| [`instagram/profiles`](https://docs.socq.ai/api-manual/instagram/profiles) | Collect public Instagram profile metadata and statistics. | usernames | 0.6 credits/result |
 | [`instagram/reels`](https://docs.socq.ai/api-manual/instagram/reels) | Instagram Reel API | one of query, urls, usernames | 0.52 credits/result |
 | [`instagram/search`](https://docs.socq.ai/api-manual/instagram/search) | Instagram Search API | one of query, urls, usernames | 0.54 credits/result |
+| [`instagram/tagged-posts`](https://docs.socq.ai/api-manual/instagram/tagged-posts) | Collect public posts that tag an Instagram profile. | usernames | 0.5 credits/result |
+| [`instagram/transcripts`](https://docs.socq.ai/api-manual/instagram/transcripts) | Extract transcripts from public Instagram posts and reels. | urls | 0.7 credits/result |
 
 ## Validated examples
 
@@ -26,6 +32,19 @@ Typed MCP tool: `socq_instagram_comments`
 }
 ```
 
+### `instagram/followers`
+
+Typed MCP tool: `socq_instagram_followers`
+
+```json
+{
+  "usernames": [
+    "instagram"
+  ],
+  "results_limit": 100
+}
+```
+
 ### `instagram/followers-count`
 
 Typed MCP tool: `socq_instagram_followers_count`
@@ -38,9 +57,47 @@ Typed MCP tool: `socq_instagram_followers_count`
 }
 ```
 
+### `instagram/following`
+
+Typed MCP tool: `socq_instagram_following`
+
+```json
+{
+  "usernames": [
+    "instagram"
+  ],
+  "results_limit": 100
+}
+```
+
+### `instagram/hashtag-posts`
+
+Typed MCP tool: `socq_instagram_hashtag_posts`
+
+```json
+{
+  "hashtags": [
+    "#travel"
+  ],
+  "results_limit": 20
+}
+```
+
 ### `instagram/posts`
 
 Typed MCP tool: `socq_instagram_posts`
+
+```json
+{
+  "usernames": [
+    "instagram"
+  ]
+}
+```
+
+### `instagram/profiles`
+
+Typed MCP tool: `socq_instagram_profiles`
 
 ```json
 {
@@ -69,5 +126,30 @@ Typed MCP tool: `socq_instagram_search`
 ```json
 {
   "query": "travel photography"
+}
+```
+
+### `instagram/tagged-posts`
+
+Typed MCP tool: `socq_instagram_tagged_posts`
+
+```json
+{
+  "usernames": [
+    "instagram"
+  ],
+  "results_limit": 20
+}
+```
+
+### `instagram/transcripts`
+
+Typed MCP tool: `socq_instagram_transcripts`
+
+```json
+{
+  "urls": [
+    "https://www.instagram.com/reel/DHsD6HGqJhp/"
+  ]
 }
 ```

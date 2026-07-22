@@ -1,14 +1,17 @@
 # Facebook
 
-Generated from SocQ Capability Registry schema `v1-063d1c96173a`. Read this file when the request targets Facebook.
+Generated from SocQ Capability Registry schema `v1-f704ad7a3630`. Read this file when the request targets Facebook.
 
 ## Endpoint selection
 
 | Endpoint | Use for | Input choice | Cost |
 | --- | --- | --- | --- |
 | [`facebook/comments`](https://docs.socq.ai/api-manual/facebook/comments) | Facebook Comments API | urls | 0.3 credits/result |
+| [`facebook/events-search`](https://docs.socq.ai/api-manual/facebook/events-search) | Search public Facebook events by keyword. | query | 0.6 credits/result |
+| [`facebook/group-posts`](https://docs.socq.ai/api-manual/facebook/group-posts) | Collect posts from public Facebook groups. | urls | 1.2 credits/result |
 | [`facebook/pages`](https://docs.socq.ai/api-manual/facebook/pages) | Facebook Page API | one of query, urls, usernames | 2.4 credits/result |
 | [`facebook/posts`](https://docs.socq.ai/api-manual/facebook/posts) | Facebook Posts API | one of query, urls, usernames | 1 credits/result |
+| [`facebook/transcripts`](https://docs.socq.ai/api-manual/facebook/transcripts) | Extract transcripts from public Facebook videos and reels. | urls | 0.7 credits/result |
 
 ## Validated examples
 
@@ -20,6 +23,29 @@ Typed MCP tool: `socq_facebook_comments`
 {
   "urls": [
     "https://www.facebook.com/nasa/posts/1234567890"
+  ]
+}
+```
+
+### `facebook/events-search`
+
+Typed MCP tool: `socq_facebook_events_search`
+
+```json
+{
+  "query": "technology conference",
+  "results_limit": 20
+}
+```
+
+### `facebook/group-posts`
+
+Typed MCP tool: `socq_facebook_group_posts`
+
+```json
+{
+  "urls": [
+    "https://www.facebook.com/groups/1270525996445602/"
   ]
 }
 ```
@@ -44,6 +70,18 @@ Typed MCP tool: `socq_facebook_posts`
 {
   "urls": [
     "https://www.facebook.com/nasa"
+  ]
+}
+```
+
+### `facebook/transcripts`
+
+Typed MCP tool: `socq_facebook_transcripts`
+
+```json
+{
+  "urls": [
+    "https://www.facebook.com/reel/1535656380759655"
   ]
 }
 ```

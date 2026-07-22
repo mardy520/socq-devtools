@@ -1,6 +1,6 @@
 # Youtube
 
-Generated from SocQ Capability Registry schema `v1-063d1c96173a`. Read this file when the request targets Youtube.
+Generated from SocQ Capability Registry schema `v1-f704ad7a3630`. Read this file when the request targets Youtube.
 
 ## Endpoint selection
 
@@ -9,6 +9,7 @@ Generated from SocQ Capability Registry schema `v1-063d1c96173a`. Read this file
 | [`youtube/channel-videos`](https://docs.socq.ai/api-manual/youtube/channel-videos) | YouTube Channel Videos API | urls | 0.5 credits/result |
 | [`youtube/channels`](https://docs.socq.ai/api-manual/youtube/channels) | YouTube Channels API | urls | 0.26 credits/result |
 | [`youtube/comments`](https://docs.socq.ai/api-manual/youtube/comments) | YouTube Comments API | urls | 0.3 credits/result |
+| [`youtube/playlist-videos`](https://docs.socq.ai/api-manual/youtube/playlist-videos) | Collect videos from a public YouTube playlist. | urls | 0.5 credits/result |
 | [`youtube/search`](https://docs.socq.ai/api-manual/youtube/search) | YouTube Search API | query | 0.5 credits/result |
 | [`youtube/shorts`](https://docs.socq.ai/api-manual/youtube/shorts) | YouTube Shorts API | urls | 0.5 credits/result |
 | [`youtube/transcripts`](https://docs.socq.ai/api-manual/youtube/transcripts) | YouTube Transcripts API | urls | 0.5 credits/result |
@@ -49,6 +50,19 @@ Typed MCP tool: `socq_youtube_comments`
   "urls": [
     "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
   ]
+}
+```
+
+### `youtube/playlist-videos`
+
+Typed MCP tool: `socq_youtube_playlist_videos`
+
+```json
+{
+  "urls": [
+    "https://www.youtube.com/playlist?list=PLBCF2DAC6FFB574DE"
+  ],
+  "results_limit": 100
 }
 ```
 
