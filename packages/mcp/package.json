@@ -5,12 +5,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mardy520/socq-devtools.git",
+    "url": "git+https://github.com/SocQAPI/socq-devtools.git",
     "directory": "packages/mcp"
   },
   "homepage": "https://docs.socq.ai/integrations/mcp",
   "bugs": {
-    "url": "https://github.com/mardy520/socq-devtools/issues"
+    "url": "https://github.com/SocQAPI/socq-devtools/issues"
   },
   "type": "module",
   "main": "./dist/index.js",

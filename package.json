@@ -4,7 +4,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mardy520/socq-devtools.git"
+    "url": "git+https://github.com/SocQAPI/socq-devtools.git"
   },
   "type": "module",
   "packageManager": "pnpm@10.13.1",
@@ -22,5 +22,10 @@
     "tsx": "^4.20.0",
     "typescript": "^5.8.0",
     "vitest": "^3.2.0"
-  }
+  },
+  "description": "Official SocQ CLI, stdio MCP bridge, and Agent Skill. Endpoint schemas are discovered from the hosted SocQ Capability Registry rather than maintained in this repository.",
+  "bugs": {
+    "url": "https://github.com/SocQAPI/socq-devtools/issues"
+  },
+  "homepage": "https://github.com/SocQAPI/socq-devtools#readme"
 }
