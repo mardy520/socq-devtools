@@ -6,6 +6,15 @@ export interface JsonSchema {
   [key: string]: unknown;
 }
 
+export type RequestSource =
+  | "rest"
+  | "cli"
+  | "mcp-remote"
+  | "mcp-stdio"
+  | "skill-mcp"
+  | "skill-cli"
+  | "skill-rest";
+
 export interface Capability {
   public_id: string;
   platform: string;
@@ -43,6 +52,7 @@ export interface TaskData {
   task_id: string;
   status: string;
   public_id?: string;
+  request_source?: RequestSource;
   input?: Record<string, unknown>;
   output?: Record<string, unknown>;
   result_count?: number;
@@ -75,6 +85,6 @@ export interface DownloadedTaskFile extends TaskFile {
 export interface ClientOptions {
   baseUrl?: string;
   apiKey?: string;
-  source?: "rest" | "cli" | "skill";
+  source?: RequestSource | "skill";
   fetch?: typeof globalThis.fetch;
 }

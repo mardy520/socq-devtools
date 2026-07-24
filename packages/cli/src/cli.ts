@@ -43,7 +43,7 @@ export async function runCli(argv: string[]): Promise<number> {
   const client = new SocqClient({
     baseUrl: stringOption(parsed, "base-url") ?? process.env.SOCQ_BASE_URL ?? config.baseUrl,
     apiKey: stringOption(parsed, "api-key") ?? process.env.SOCQ_API_KEY ?? stored.apiKey,
-    source: "cli",
+    source: requestSource(parsed),
   });
   const format = outputFormat(parsed);
   const output = stringOption(parsed, "output");
@@ -175,6 +175,15 @@ function stringOption(parsed: ParsedArgs, name: string): string | undefined {
   return typeof value === "string" ? value : undefined;
 }
 
+function requestSource(parsed: ParsedArgs): "cli" | "skill-cli" {
+  const value = (stringOption(parsed, "request-source") ?? process.env.SOCQ_REQUEST_SOURCE ?? "cli")
+    .trim()
+    .toLowerCase();
+  if (value === "cli") return "cli";
+  if (value === "skill" || value === "skill-cli") return "skill-cli";
+  throw new Error("--request-source must be cli or skill");
+}
+
 export function exitCodeFor(error: unknown): number {
   if (error instanceof SocqApiError) {
     if (error.status === 401 || error.status === 403) return 3;
@@ -186,4 +195,4 @@ export function exitCodeFor(error: unknown): number {
   return 2;
 }
 
-const HELP = `SocQ CLI\n\nUsage:\n  socq auth login|status|clear\n  socq platforms\n  socq tools [platform]\n  socq describe PLATFORM/RESOURCE\n  socq run PLATFORM RESOURCE [--input JSON | --input-file FILE]\n  socq PLATFORM RESOURCE [endpoint flags]\n  socq task get|wait|results|files|download TASK_ID\n  socq account\n  socq mcp [--platforms LIST | --tools LIST]\n\nGlobal output: --format table|json|jsonl|csv --output FILE\nAuthentication priority: --api-key, SOCQ_API_KEY, system keyring, local fallback config. Avoid --api-key in shell history.\n`;
+const HELP = `SocQ CLI\n\nUsage:\n  socq auth login|status|clear\n  socq platforms\n  socq tools [platform]\n  socq describe PLATFORM/RESOURCE\n  socq run PLATFORM RESOURCE [--input JSON | --input-file FILE]\n  socq PLATFORM RESOURCE [endpoint flags]\n  socq task get|wait|results|files|download TASK_ID\n  socq account\n  socq mcp [--platforms LIST | --tools LIST]\n\nGlobal output: --format table|json|jsonl|csv --output FILE\nSkill attribution: --request-source skill or SOCQ_REQUEST_SOURCE=skill.\nAuthentication priority: --api-key, SOCQ_API_KEY, system keyring, local fallback config. Avoid --api-key in shell history.\n`;

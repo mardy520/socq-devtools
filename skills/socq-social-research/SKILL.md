@@ -15,6 +15,10 @@ Use SocQ to collect public social data through an asynchronous, credit-metered w
    - `?tools=youtube_comments,x_search` for at most thirty endpoint tools.
 3. Run `npx @socq/mcp` when the client only supports local stdio MCP.
 4. Fall back to `npx @socq/cli` or REST only when MCP is unavailable.
+5. Attribute every execution started by this Skill:
+   - pass `_request_source: "skill"` to compact or typed MCP execution tools;
+   - pass `--request-source skill` to CLI execution commands;
+   - send `X-Socq-Source: skill-rest` for direct REST execution.
 
 Never place an API key in a prompt, query string, committed file, or shell command that will be retained. Read [authentication.md](references/authentication.md) before configuring credentials.
 

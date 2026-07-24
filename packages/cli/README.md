@@ -26,6 +26,8 @@ Authentication priority is `--api-key`, `SOCQ_API_KEY`, then the system keyring 
 
 Use `SOCQ_BASE_URL` or `--base-url` to target another SocQ API environment. Run `socq mcp` to start the bundled stdio MCP bridge.
 
+Agent Skills should pass `--request-source skill` or set `SOCQ_REQUEST_SOURCE=skill`; submitted tasks are then attributed as `skill-cli`.
+
 See the [SocQ CLI documentation](https://docs.socq.ai/integrations/cli).
 
 ## License
