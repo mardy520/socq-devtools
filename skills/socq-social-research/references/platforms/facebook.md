@@ -11,7 +11,7 @@ Generated from SocQ Capability Registry schema `v1-57489840196e`. Read this file
 | [`facebook/group-posts`](https://docs.socq.ai/api-manual/facebook/group-posts) | Collect posts from public Facebook groups. | urls | 1.2 credits/result |
 | [`facebook/pages`](https://docs.socq.ai/api-manual/facebook/pages) | Facebook Page API | one of query, urls, usernames | 2.4 credits/result |
 | [`facebook/posts`](https://docs.socq.ai/api-manual/facebook/posts) | Facebook Posts API | one of query, urls, usernames | 1 credits/result |
-| [`facebook/transcripts`](https://docs.socq.ai/api-manual/facebook/transcripts) | Extract transcripts from public Facebook videos and reels. | urls | 0.7 credits/result |
+| [`facebook/video-transcript`](https://docs.socq.ai/api-manual/facebook/video-transcript) | Extract transcripts from public Facebook videos and reels. | urls | 0.7 credits/result |
 
 ## Validated examples
 
@@ -74,7 +74,7 @@ Typed MCP tool: `socq_facebook_posts`
 }
 ```
 
-### `facebook/transcripts`
+### `facebook/video-transcript`
 
 Typed MCP tool: `socq_facebook_transcripts`
 

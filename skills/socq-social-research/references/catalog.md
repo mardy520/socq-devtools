@@ -16,18 +16,18 @@ Generated from SocQ Capability Registry schema `v1-57489840196e`. Do not edit en
 | [`facebook/group-posts`](https://docs.socq.ai/api-manual/facebook/group-posts) | Collect posts from public Facebook groups. | urls | 1.2 credits/result |
 | [`facebook/pages`](https://docs.socq.ai/api-manual/facebook/pages) | Facebook Page API | one of query, urls, usernames | 2.4 credits/result |
 | [`facebook/posts`](https://docs.socq.ai/api-manual/facebook/posts) | Facebook Posts API | one of query, urls, usernames | 1 credits/result |
-| [`facebook/transcripts`](https://docs.socq.ai/api-manual/facebook/transcripts) | Extract transcripts from public Facebook videos and reels. | urls | 0.7 credits/result |
+| [`facebook/video-transcript`](https://docs.socq.ai/api-manual/facebook/video-transcript) | Extract transcripts from public Facebook videos and reels. | urls | 0.7 credits/result |
 | [`instagram/comments`](https://docs.socq.ai/api-manual/instagram/comments) | Instagram Comments API | urls | 0.3 credits/result |
-| [`instagram/followers`](https://docs.socq.ai/api-manual/instagram/followers) | Collect public profiles from an Instagram account follower list. | usernames | 0.3 credits/result |
+| [`instagram/followers-list`](https://docs.socq.ai/api-manual/instagram/followers-list) | Collect public profiles from an Instagram account follower list. | usernames | 0.3 credits/result |
 | [`instagram/followers-count`](https://docs.socq.ai/api-manual/instagram/followers-count) | Instagram Followers Count API | one of query, urls, usernames | 0.52 credits/result |
-| [`instagram/following`](https://docs.socq.ai/api-manual/instagram/following) | Collect public profiles followed by an Instagram account. | usernames | 0.3 credits/result |
+| [`instagram/following-list`](https://docs.socq.ai/api-manual/instagram/following-list) | Collect public profiles followed by an Instagram account. | usernames | 0.3 credits/result |
 | [`instagram/hashtag-posts`](https://docs.socq.ai/api-manual/instagram/hashtag-posts) | Collect public Instagram posts matching a hashtag. | hashtags | 0.5 credits/result |
 | [`instagram/posts`](https://docs.socq.ai/api-manual/instagram/posts) | Instagram Post API | one of query, urls, usernames | 0.34 credits/result |
 | [`instagram/profiles`](https://docs.socq.ai/api-manual/instagram/profiles) | Collect public Instagram profile metadata and statistics. | usernames | 0.6 credits/result |
 | [`instagram/reels`](https://docs.socq.ai/api-manual/instagram/reels) | Instagram Reel API | one of query, urls, usernames | 0.52 credits/result |
 | [`instagram/search`](https://docs.socq.ai/api-manual/instagram/search) | Instagram Search API | one of query, urls, usernames | 0.54 credits/result |
 | [`instagram/tagged-posts`](https://docs.socq.ai/api-manual/instagram/tagged-posts) | Collect public posts that tag an Instagram profile. | usernames | 0.5 credits/result |
-| [`instagram/transcripts`](https://docs.socq.ai/api-manual/instagram/transcripts) | Extract transcripts from public Instagram posts and reels. | urls | 0.7 credits/result |
+| [`instagram/transcript`](https://docs.socq.ai/api-manual/instagram/transcript) | Extract transcripts from public Instagram posts and reels. | urls | 0.7 credits/result |
 | [`linkedin/companies`](https://docs.socq.ai/api-manual/linkedin/companies) | LinkedIn Companies API | urls | 2 credits/result |
 | [`linkedin/jobs`](https://docs.socq.ai/api-manual/linkedin/jobs) | LinkedIn Jobs API | urls | 0.8 credits/result |
 | [`linkedin/posts`](https://docs.socq.ai/api-manual/linkedin/posts) | LinkedIn Posts API | urls | 1 credits/result |

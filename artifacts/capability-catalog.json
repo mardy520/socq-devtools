@@ -2054,7 +2054,7 @@
         "docs_url": "https://docs.socq.ai/api-manual/facebook/posts"
       },
       {
-        "public_id": "facebook/transcripts",
+        "public_id": "facebook/video-transcript",
         "platform": "facebook",
         "resource": "transcripts",
         "tool_name": "socq_facebook_transcripts",
@@ -2194,7 +2194,7 @@
         "supports_files": true,
         "supports_callback": false,
         "status": "stable",
-        "docs_url": "https://docs.socq.ai/api-manual/facebook/transcripts"
+        "docs_url": "https://docs.socq.ai/api-manual/facebook/video-transcript"
       },
       {
         "public_id": "instagram/comments",
@@ -2345,7 +2345,7 @@
         "docs_url": "https://docs.socq.ai/api-manual/instagram/comments"
       },
       {
-        "public_id": "instagram/followers",
+        "public_id": "instagram/followers-list",
         "platform": "instagram",
         "resource": "followers",
         "tool_name": "socq_instagram_followers",
@@ -2493,7 +2493,7 @@
         "supports_files": true,
         "supports_callback": false,
         "status": "stable",
-        "docs_url": "https://docs.socq.ai/api-manual/instagram/followers"
+        "docs_url": "https://docs.socq.ai/api-manual/instagram/followers-list"
       },
       {
         "public_id": "instagram/followers-count",
@@ -2678,7 +2678,7 @@
         "docs_url": "https://docs.socq.ai/api-manual/instagram/followers-count"
       },
       {
-        "public_id": "instagram/following",
+        "public_id": "instagram/following-list",
         "platform": "instagram",
         "resource": "following",
         "tool_name": "socq_instagram_following",
@@ -2826,7 +2826,7 @@
         "supports_files": true,
         "supports_callback": false,
         "status": "stable",
-        "docs_url": "https://docs.socq.ai/api-manual/instagram/following"
+        "docs_url": "https://docs.socq.ai/api-manual/instagram/following-list"
       },
       {
         "public_id": "instagram/hashtag-posts",
@@ -3823,7 +3823,7 @@
         "docs_url": "https://docs.socq.ai/api-manual/instagram/tagged-posts"
       },
       {
-        "public_id": "instagram/transcripts",
+        "public_id": "instagram/transcript",
         "platform": "instagram",
         "resource": "transcripts",
         "tool_name": "socq_instagram_transcripts",
@@ -3963,7 +3963,7 @@
         "supports_files": true,
         "supports_callback": false,
         "status": "stable",
-        "docs_url": "https://docs.socq.ai/api-manual/instagram/transcripts"
+        "docs_url": "https://docs.socq.ai/api-manual/instagram/transcript"
       },
       {
         "public_id": "linkedin/companies",
