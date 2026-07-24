@@ -35,6 +35,17 @@ pnpm generate:skills
 
 Do not commit test-environment Catalog output as production artifacts. npm publishing is performed by the protected `publish.yml` workflow after the committed artifacts match the production Registry.
 
+To prepare a stable release from a clean working tree, run:
+
+```bash
+pnpm run release:stable -- 0.1.0
+```
+
+This updates all package versions, refreshes production artifacts, runs the release
+checks, and creates the release commit. It does not push or publish. After pushing,
+run the protected `publish.yml` workflow with `dist_tag` set to `latest` and the
+confirmation set to `publish:0.1.0:latest`.
+
 ## License
 
 MIT
