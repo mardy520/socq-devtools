@@ -1,6 +1,6 @@
 # TikTok Shop
 
-Generated from SocQ Capability Registry schema `v1-57489840196e`. Read this file when the request targets TikTok Shop.
+Generated from SocQ Capability Registry schema `v1-23199b4e1a3e`. Read this file when the request targets TikTok Shop.
 
 ## Endpoint selection
 

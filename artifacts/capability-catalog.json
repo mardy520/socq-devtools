@@ -1,5 +1,5 @@
 {
-  "schema_version": "v1-57489840196e",
+  "schema_version": "v1-23199b4e1a3e",
   "platforms": [
     {
       "platform": "facebook",
@@ -11,7 +11,7 @@
         "socq_facebook_group_posts",
         "socq_facebook_pages",
         "socq_facebook_posts",
-        "socq_facebook_transcripts"
+        "socq_facebook_video_transcript"
       ]
     },
     {
@@ -41,16 +41,16 @@
       "endpoint_count": 11,
       "tools": [
         "socq_instagram_comments",
-        "socq_instagram_followers",
         "socq_instagram_followers_count",
-        "socq_instagram_following",
+        "socq_instagram_followers_list",
+        "socq_instagram_following_list",
         "socq_instagram_hashtag_posts",
         "socq_instagram_posts",
         "socq_instagram_profiles",
         "socq_instagram_reels",
         "socq_instagram_search",
         "socq_instagram_tagged_posts",
-        "socq_instagram_transcripts"
+        "socq_instagram_transcript"
       ]
     },
     {
@@ -2056,8 +2056,8 @@
       {
         "public_id": "facebook/video-transcript",
         "platform": "facebook",
-        "resource": "transcripts",
-        "tool_name": "socq_facebook_transcripts",
+        "resource": "video-transcript",
+        "tool_name": "socq_facebook_video_transcript",
         "title": "Facebook Video Transcripts API",
         "description": "Extract transcripts from public Facebook videos and reels.",
         "input_schema": {
@@ -2187,7 +2187,7 @@
         ],
         "tags": [
           "facebook",
-          "transcripts"
+          "video-transcript"
         ],
         "execution_mode": "async",
         "supports_pagination": true,
@@ -2343,157 +2343,6 @@
         "supports_callback": true,
         "status": "stable",
         "docs_url": "https://docs.socq.ai/api-manual/instagram/comments"
-      },
-      {
-        "public_id": "instagram/followers-list",
-        "platform": "instagram",
-        "resource": "followers",
-        "tool_name": "socq_instagram_followers",
-        "title": "Instagram Followers API",
-        "description": "Collect public profiles from an Instagram account follower list.",
-        "input_schema": {
-          "$schema": "https://json-schema.org/draft/2020-12/schema",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "results_limit": {
-              "type": "integer",
-              "minimum": 1,
-              "maximum": 2000
-            },
-            "usernames": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "minLength": 1
-              },
-              "minItems": 1,
-              "description": "Public account usernames."
-            }
-          },
-          "required": [
-            "usernames"
-          ]
-        },
-        "output_schema": {
-          "type": "object",
-          "properties": {
-            "task_id": {
-              "type": "string"
-            },
-            "status": {
-              "type": "string"
-            },
-            "results": {
-              "type": "object",
-              "properties": {
-                "items": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": true,
-                    "properties": {
-                      "platform": {
-                        "type": "string"
-                      },
-                      "resource": {
-                        "type": "string"
-                      },
-                      "type": {
-                        "type": "string"
-                      },
-                      "id": {
-                        "type": [
-                          "string",
-                          "number",
-                          "null"
-                        ]
-                      },
-                      "url": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "author": {
-                        "type": "object",
-                        "additionalProperties": true
-                      },
-                      "text": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      },
-                      "metrics": {
-                        "type": "object",
-                        "additionalProperties": true
-                      },
-                      "media": {
-                        "type": [
-                          "object",
-                          "array"
-                        ],
-                        "additionalProperties": true
-                      },
-                      "published_at": {
-                        "type": [
-                          "string",
-                          "null"
-                        ]
-                      }
-                    }
-                  }
-                },
-                "next_cursor": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                },
-                "has_more": {
-                  "type": "boolean"
-                }
-              }
-            }
-          }
-        },
-        "billing": {
-          "mode": "base_plus_result",
-          "credits": null,
-          "base_credits": 0,
-          "unit": "result",
-          "unit_size": 1,
-          "unit_credits": 0.3,
-          "config": {
-            "mode": "base_plus_result",
-            "allow_overage": 1,
-            "result_unit_size": 1,
-            "empty_result_policy": "base_only",
-            "result_unit_credits": 0.3,
-            "estimate_result_count": 100,
-            "estimate_result_count_per_input_field": "usernames"
-          },
-          "dynamic": true
-        },
-        "examples": [
-          {
-            "usernames": [
-              "instagram"
-            ],
-            "results_limit": 100
-          }
-        ],
-        "tags": [
-          "instagram",
-          "followers"
-        ],
-        "execution_mode": "async",
-        "supports_pagination": true,
-        "supports_files": true,
-        "supports_callback": false,
-        "status": "stable",
-        "docs_url": "https://docs.socq.ai/api-manual/instagram/followers-list"
       },
       {
         "public_id": "instagram/followers-count",
@@ -2678,10 +2527,161 @@
         "docs_url": "https://docs.socq.ai/api-manual/instagram/followers-count"
       },
       {
+        "public_id": "instagram/followers-list",
+        "platform": "instagram",
+        "resource": "followers-list",
+        "tool_name": "socq_instagram_followers_list",
+        "title": "Instagram Followers API",
+        "description": "Collect public profiles from an Instagram account follower list.",
+        "input_schema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "results_limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2000
+            },
+            "usernames": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "description": "Public account usernames."
+            }
+          },
+          "required": [
+            "usernames"
+          ]
+        },
+        "output_schema": {
+          "type": "object",
+          "properties": {
+            "task_id": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "results": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "properties": {
+                      "platform": {
+                        "type": "string"
+                      },
+                      "resource": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": [
+                          "string",
+                          "number",
+                          "null"
+                        ]
+                      },
+                      "url": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "author": {
+                        "type": "object",
+                        "additionalProperties": true
+                      },
+                      "text": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "metrics": {
+                        "type": "object",
+                        "additionalProperties": true
+                      },
+                      "media": {
+                        "type": [
+                          "object",
+                          "array"
+                        ],
+                        "additionalProperties": true
+                      },
+                      "published_at": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "next_cursor": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "has_more": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "billing": {
+          "mode": "base_plus_result",
+          "credits": null,
+          "base_credits": 0,
+          "unit": "result",
+          "unit_size": 1,
+          "unit_credits": 0.3,
+          "config": {
+            "mode": "base_plus_result",
+            "allow_overage": 1,
+            "result_unit_size": 1,
+            "empty_result_policy": "base_only",
+            "result_unit_credits": 0.3,
+            "estimate_result_count": 100,
+            "estimate_result_count_per_input_field": "usernames"
+          },
+          "dynamic": true
+        },
+        "examples": [
+          {
+            "usernames": [
+              "instagram"
+            ],
+            "results_limit": 100
+          }
+        ],
+        "tags": [
+          "instagram",
+          "followers-list"
+        ],
+        "execution_mode": "async",
+        "supports_pagination": true,
+        "supports_files": true,
+        "supports_callback": false,
+        "status": "stable",
+        "docs_url": "https://docs.socq.ai/api-manual/instagram/followers-list"
+      },
+      {
         "public_id": "instagram/following-list",
         "platform": "instagram",
-        "resource": "following",
-        "tool_name": "socq_instagram_following",
+        "resource": "following-list",
+        "tool_name": "socq_instagram_following_list",
         "title": "Instagram Following API",
         "description": "Collect public profiles followed by an Instagram account.",
         "input_schema": {
@@ -2819,7 +2819,7 @@
         ],
         "tags": [
           "instagram",
-          "following"
+          "following-list"
         ],
         "execution_mode": "async",
         "supports_pagination": true,
@@ -3825,8 +3825,8 @@
       {
         "public_id": "instagram/transcript",
         "platform": "instagram",
-        "resource": "transcripts",
-        "tool_name": "socq_instagram_transcripts",
+        "resource": "transcript",
+        "tool_name": "socq_instagram_transcript",
         "title": "Instagram Transcripts API",
         "description": "Extract transcripts from public Instagram posts and reels.",
         "input_schema": {
@@ -3956,7 +3956,7 @@
         ],
         "tags": [
           "instagram",
-          "transcripts"
+          "transcript"
         ],
         "execution_mode": "async",
         "supports_pagination": true,

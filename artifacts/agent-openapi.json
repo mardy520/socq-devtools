@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SocQ Agent API",
-    "version": "v1-57489840196e",
+    "version": "v1-23199b4e1a3e",
     "description": "Asynchronous social data API generated from the SocQ Capability Registry."
   },
   "servers": [
@@ -870,7 +870,7 @@
     },
     "/v1/facebook/video-transcript": {
       "post": {
-        "operationId": "socq_facebook_transcripts",
+        "operationId": "socq_facebook_video_transcript",
         "summary": "Facebook Video Transcripts API",
         "description": "Extract transcripts from public Facebook videos and reels.",
         "tags": [
@@ -984,67 +984,6 @@
         }
       }
     },
-    "/v1/instagram/followers-list": {
-      "post": {
-        "operationId": "socq_instagram_followers",
-        "summary": "Instagram Followers API",
-        "description": "Collect public profiles from an Instagram account follower list.",
-        "tags": [
-          "instagram"
-        ],
-        "security": [
-          {
-            "bearerAuth": []
-          },
-          {
-            "apiKeyAuth": []
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$schema": "https://json-schema.org/draft/2020-12/schema",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "results_limit": {
-                    "type": "integer",
-                    "minimum": 1,
-                    "maximum": 2000
-                  },
-                  "usernames": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "minItems": 1,
-                    "description": "Public account usernames."
-                  }
-                },
-                "required": [
-                  "usernames"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Task accepted",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AgentSubmitResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/v1/instagram/followers-count": {
       "post": {
         "operationId": "socq_instagram_followers_count",
@@ -1139,9 +1078,70 @@
         }
       }
     },
+    "/v1/instagram/followers-list": {
+      "post": {
+        "operationId": "socq_instagram_followers_list",
+        "summary": "Instagram Followers API",
+        "description": "Collect public profiles from an Instagram account follower list.",
+        "tags": [
+          "instagram"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          },
+          {
+            "apiKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "results_limit": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 2000
+                  },
+                  "usernames": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "minItems": 1,
+                    "description": "Public account usernames."
+                  }
+                },
+                "required": [
+                  "usernames"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Task accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentSubmitResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/instagram/following-list": {
       "post": {
-        "operationId": "socq_instagram_following",
+        "operationId": "socq_instagram_following_list",
         "summary": "Instagram Following API",
         "description": "Collect public profiles followed by an Instagram account.",
         "tags": [
@@ -1670,7 +1670,7 @@
     },
     "/v1/instagram/transcript": {
       "post": {
-        "operationId": "socq_instagram_transcripts",
+        "operationId": "socq_instagram_transcript",
         "summary": "Instagram Transcripts API",
         "description": "Extract transcripts from public Instagram posts and reels.",
         "tags": [

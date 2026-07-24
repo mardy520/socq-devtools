@@ -1,14 +1,14 @@
 # Instagram
 
-Generated from SocQ Capability Registry schema `v1-57489840196e`. Read this file when the request targets Instagram.
+Generated from SocQ Capability Registry schema `v1-23199b4e1a3e`. Read this file when the request targets Instagram.
 
 ## Endpoint selection
 
 | Endpoint | Use for | Input choice | Cost |
 | --- | --- | --- | --- |
 | [`instagram/comments`](https://docs.socq.ai/api-manual/instagram/comments) | Instagram Comments API | urls | 0.3 credits/result |
-| [`instagram/followers-list`](https://docs.socq.ai/api-manual/instagram/followers-list) | Collect public profiles from an Instagram account follower list. | usernames | 0.3 credits/result |
 | [`instagram/followers-count`](https://docs.socq.ai/api-manual/instagram/followers-count) | Instagram Followers Count API | one of query, urls, usernames | 0.52 credits/result |
+| [`instagram/followers-list`](https://docs.socq.ai/api-manual/instagram/followers-list) | Collect public profiles from an Instagram account follower list. | usernames | 0.3 credits/result |
 | [`instagram/following-list`](https://docs.socq.ai/api-manual/instagram/following-list) | Collect public profiles followed by an Instagram account. | usernames | 0.3 credits/result |
 | [`instagram/hashtag-posts`](https://docs.socq.ai/api-manual/instagram/hashtag-posts) | Collect public Instagram posts matching a hashtag. | hashtags | 0.5 credits/result |
 | [`instagram/posts`](https://docs.socq.ai/api-manual/instagram/posts) | Instagram Post API | one of query, urls, usernames | 0.34 credits/result |
@@ -32,19 +32,6 @@ Typed MCP tool: `socq_instagram_comments`
 }
 ```
 
-### `instagram/followers-list`
-
-Typed MCP tool: `socq_instagram_followers`
-
-```json
-{
-  "usernames": [
-    "instagram"
-  ],
-  "results_limit": 100
-}
-```
-
 ### `instagram/followers-count`
 
 Typed MCP tool: `socq_instagram_followers_count`
@@ -57,9 +44,22 @@ Typed MCP tool: `socq_instagram_followers_count`
 }
 ```
 
+### `instagram/followers-list`
+
+Typed MCP tool: `socq_instagram_followers_list`
+
+```json
+{
+  "usernames": [
+    "instagram"
+  ],
+  "results_limit": 100
+}
+```
+
 ### `instagram/following-list`
 
-Typed MCP tool: `socq_instagram_following`
+Typed MCP tool: `socq_instagram_following_list`
 
 ```json
 {
@@ -144,7 +144,7 @@ Typed MCP tool: `socq_instagram_tagged_posts`
 
 ### `instagram/transcript`
 
-Typed MCP tool: `socq_instagram_transcripts`
+Typed MCP tool: `socq_instagram_transcript`
 
 ```json
 {
