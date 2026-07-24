@@ -6,7 +6,7 @@ const packagePaths = [
   "packages/mcp/package.json",
   "packages/cli/package.json",
 ];
-const version = process.argv[2];
+const version = process.argv.slice(2).find((argument) => argument !== "--");
 
 if (!version || !/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(version)) {
   fail("Usage: pnpm run release:stable -- <version> (for example 0.1.0)");
